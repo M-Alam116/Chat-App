@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
@@ -10,6 +10,8 @@ import { useHistory } from "react-router";
 const Signup = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const handleConfirmClick = () => setShowConfirm(!showConfirm);
   const toast = useToast();
   const history = useHistory();
 
@@ -165,13 +167,13 @@ const Signup = () => {
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
-            type={show ? "text" : "password"}
+            type={showConfirm ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmpassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
+            <Button h="1.75rem" size="sm" onClick={handleConfirmClick}>
+              {showConfirm ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
         </InputGroup>
