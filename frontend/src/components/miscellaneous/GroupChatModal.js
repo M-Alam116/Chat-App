@@ -12,12 +12,15 @@ import {
   Input,
   useToast,
   Box,
+  Text,
+  Avatar,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/UserBadgeItem";
-import UserListItem from "../userAvatar/UserListItem";
+// import UserListItem from "../userAvatar/UserListItem";
+import { Spinner } from "@chakra-ui/spinner";
 
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -167,17 +170,47 @@ const GroupChatModal = ({ children }) => {
             </Box>
             {loading ? (
               // <ChatLoading />
-              <div>Loading...</div>
+              <Spinner mt="10px" d="flex" />
             ) : (
-              searchResult
-                ?.slice(0, 4)
-                .map((user) => (
-                  <UserListItem
-                    key={user._id}
-                    user={user}
-                    handleFunction={() => handleGroup(user)}
+              searchResult?.slice(0, 4).map((user) => (
+                <Box
+                  onClick={() => handleGroup(user)}
+                  cursor="pointer"
+                  bg="#E8E8E8"
+                  _hover={{
+                    background: "#38B2AC",
+                    color: "white",
+                  }}
+                  w="100%"
+                  d="flex"
+                  alignItems="center"
+                  color="black"
+                  px={3}
+                  py={2}
+                  mb={2}
+                  borderRadius="lg"
+                >
+                  <Avatar
+                    mr={2}
+                    size="sm"
+                    cursor="pointer"
+                    name={user.name}
+                    src={user.pic}
                   />
-                ))
+                  <Box>
+                    <Text>{user.name}</Text>
+                    <Text fontSize="xs">
+                      <b>Email : </b>
+                      {user.email}
+                    </Text>
+                  </Box>
+                </Box>
+                // <UserListItem
+                //   key={user._id}
+                //   user={user}
+                //   handleFunction={() => handleGroup(user)}
+                // />
+              ))
             )}
           </ModalBody>
           <ModalFooter>

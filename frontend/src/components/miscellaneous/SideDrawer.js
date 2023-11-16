@@ -29,7 +29,7 @@ import ProfileModal from "./ProfileModal";
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
-import UserListItem from "../userAvatar/UserListItem";
+// import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 
 function SideDrawer() {
@@ -208,11 +208,43 @@ function SideDrawer() {
               <ChatLoading />
             ) : (
               searchResult?.map((user) => (
-                <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => accessChat(user._id)}
-                />
+                <Box
+                  onClick={() => accessChat(user._id)}
+                  cursor="pointer"
+                  bg="#E8E8E8"
+                  _hover={{
+                    background: "#38B2AC",
+                    color: "white",
+                  }}
+                  w="100%"
+                  d="flex"
+                  alignItems="center"
+                  color="black"
+                  px={3}
+                  py={2}
+                  mb={2}
+                  borderRadius="lg"
+                >
+                  <Avatar
+                    mr={2}
+                    size="sm"
+                    cursor="pointer"
+                    name={user.name}
+                    src={user.pic}
+                  />
+                  <Box>
+                    <Text>{user.name}</Text>
+                    <Text fontSize="xs">
+                      <b>Email : </b>
+                      {user.email}
+                    </Text>
+                  </Box>
+                </Box>
+                // <UserListItem
+                //   key={user._id}
+                //   user={user}
+                //   handleFunction={() => accessChat(user._id)}
+                // />
               ))
             )}
             {loadingChat && <Spinner ml="auto" d="flex" />}
