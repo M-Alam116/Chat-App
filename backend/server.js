@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json()); // to accept json data
 app.use(
   cors({
-    origin: "http://mern-chat-App.vercel.app",
+    origin: "https://mern-chat-app-api.vercel.app/",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
@@ -54,7 +54,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://mern-chat-app-api.vercel.app/",
     // credentials: true,
   },
 });
