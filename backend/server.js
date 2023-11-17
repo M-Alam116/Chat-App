@@ -55,7 +55,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: "https://chat-app-sandy-alpha.vercel.app",
-    // credentials: true,
+    credentials: true,
   },
 });
 
