@@ -15,7 +15,7 @@ import animationData from "../animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://mern-chat-app-api.vercel.app/"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
+const ENDPOINT = "https://mern-chat-app-api.vercel.app";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
