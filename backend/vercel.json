@@ -4,6 +4,14 @@
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
   "routes": [
     {
+      "src": "/api/user/login",
+      "dest": "/api/user/login"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
     }
