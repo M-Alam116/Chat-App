@@ -18,8 +18,7 @@ const app = express();
 app.use(express.json()); // to accept json data
 app.use(
   cors({
-    origin: "https://chat-app-sandy-alpha.vercel.app",
-    // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    origin: "*",
     credentials: true,
   })
 );
