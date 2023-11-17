@@ -9,12 +9,20 @@ import messageRoutes from "./routes/messageRoutes.js";
 import colors from "colors";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import path from "path";
+import cors from "cors";
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json()); // to accept json data
+app.use(
+  cors({
+    origin: "http://mern-chat-App.vercel.app",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
